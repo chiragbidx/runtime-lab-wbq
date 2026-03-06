@@ -5,6 +5,7 @@ import {
   CheckCircle2,
   Quote,
 } from 'lucide-react';
+import React, { useState, useEffect } from "react";
 
 const testimonials = [
   {
@@ -129,7 +130,6 @@ const faqs = [
   },
 ];
 
-import React, { useState } from "react";
 function HeroCTAButtons() {
   return (
     <div className="flex flex-col sm:flex-row justify-center gap-4 mt-8">
@@ -194,6 +194,10 @@ function FAQSection() {
 }
 
 export default function GrowthKitLanding() {
+  const [currentYear, setCurrentYear] = useState(2024);
+  useEffect(() => {
+    setCurrentYear(new Date().getFullYear());
+  }, []);
   return (
     <main className="grow bg-white">
       {/* Headline & PAS Hero */}
@@ -358,7 +362,7 @@ export default function GrowthKitLanding() {
             <h3 className="text-xl font-bold">GrowthKit by Growzio</h3>
             <p className="mt-3 text-gray-300 max-w-xs">
               The all-in-one growth launchpad for founders. <br />
-              &copy; {new Date().getFullYear()} Chirag Dodiya. All rights reserved.
+              &copy; {currentYear} Chirag Dodiya. All rights reserved.
             </p>
           </div>
           <div>
