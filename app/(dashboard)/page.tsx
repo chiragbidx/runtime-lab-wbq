@@ -5,7 +5,7 @@ import {
   CheckCircle2,
   Quote,
 } from 'lucide-react';
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 
 const testimonials = [
   {
@@ -194,10 +194,7 @@ function FAQSection() {
 }
 
 export default function GrowthKitLanding() {
-  const [currentYear, setCurrentYear] = useState(2024);
-  useEffect(() => {
-    setCurrentYear(new Date().getFullYear());
-  }, []);
+  const staticYear = 2024; // Static, update manually as needed
   return (
     <main className="grow bg-white">
       {/* Headline & PAS Hero */}
@@ -362,7 +359,7 @@ export default function GrowthKitLanding() {
             <h3 className="text-xl font-bold">GrowthKit by Growzio</h3>
             <p className="mt-3 text-gray-300 max-w-xs">
               The all-in-one growth launchpad for founders. <br />
-              &copy; {currentYear} Chirag Dodiya. All rights reserved.
+              &copy; {staticYear} Chirag Dodiya. All rights reserved.
             </p>
           </div>
           <div>
