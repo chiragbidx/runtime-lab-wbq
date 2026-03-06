@@ -1,3 +1,4 @@
+"use client";
 import { Button } from '@/components/ui/button';
 import {
   ArrowRight,
@@ -128,6 +129,7 @@ const faqs = [
   },
 ];
 
+import React, { useState } from "react";
 function HeroCTAButtons() {
   return (
     <div className="flex flex-col sm:flex-row justify-center gap-4 mt-8">
@@ -145,9 +147,6 @@ function HeroCTAButtons() {
     </div>
   );
 }
-
-"use client";
-import React, { useState } from "react";
 function FAQSection() {
   const [openIndex, setOpenIndex] = useState<number | null>(null);
   return (
