@@ -1,454 +1,412 @@
 import { Button } from '@/components/ui/button';
 import {
   ArrowRight,
-  CreditCard,
-  Database,
-  Users,
-  Shield,
-  Mail,
-  Zap,
   CheckCircle2,
-  Clock,
-  Code,
-  Server,
-  GitBranch,
-  Settings,
-  Rocket,
-  TrendingUp,
-  Globe,
-  FileText,
+  Quote,
 } from 'lucide-react';
-import { Terminal } from './terminal';
 
-export default function HomePage() {
+const testimonials = [
+  {
+    quote:
+      "GrowthKit gave us the clarity, tools, and confidence to run growth experiments without extra hires. It's the fastest way to build a marketing system for your startup.",
+    name: 'Samantha L.',
+    title: 'Head of Growth, Finana',
+  },
+  {
+    quote:
+      "We went from zero content to a fully operational inbound engine in two weeks. The templates pay for themselves in time saved.",
+    name: 'Daniel B.',
+    title: 'Founder, Turbocode',
+  },
+  {
+    quote:
+      "Our small team doubled qualified leads just by following GrowthKit’s battle-tested playbooks. Worth every penny.",
+    name: 'Priya C.',
+    title: 'Growth Lead, Clario',
+  },
+];
+
+const features = [
+  {
+    name: '50+ Plug-and-Play Marketing Templates',
+    desc: 'Landing pages, ads, emails, cold outreach, social scripts, and more—ready to personalize and deploy.',
+  },
+  {
+    name: 'Growth Playbooks that Work',
+    desc: 'Step-by-step campaign blueprints for virality, SEO, cold outreach, product launches, and customer onboarding.',
+  },
+  {
+    name: 'Easy Automation Toolkit',
+    desc: "Automate follow-ups, reporting, lead routing, and repetitive growth ops with no-code recipes and Zapier packs.",
+  },
+  {
+    name: 'Team Collaboration',
+    desc: 'Assign growth tasks, share notes, track progress, and keep everyone aligned on new experiments.',
+  },
+  {
+    name: 'Strategy Library',
+    desc: 'Explore proven strategies for every stage—from pre-launch waitlists to paid scaling.',
+  },
+  {
+    name: 'Live Support & Community',
+    desc: 'Get expert guidance and join founders tackling the same challenges.',
+  },
+];
+
+const pricingPlans = [
+  {
+    name: 'Starter',
+    price: '$39/mo',
+    desc: 'Ideal for solo founders or small teams validating ideas.',
+    features: [
+      'All marketing templates',
+      '2 growth playbooks/month',
+      'Basic automation recipes',
+      'Community access',
+      'Email support',
+    ],
+    popular: false,
+  },
+  {
+    name: 'Growth',
+    price: '$99/mo',
+    desc: 'Designed for growing teams serious about traction.',
+    features: [
+      'Unlimited marketing templates',
+      'All playbooks (50+)',
+      'Advanced automation toolkit',
+      'Full templates library',
+      'Priority support',
+      'Team collaboration tools',
+      '1:1 onboard session',
+    ],
+    popular: true,
+  },
+  {
+    name: 'Enterprise',
+    price: 'Custom',
+    desc: 'Dedicated success, custom automations, and integration help.',
+    features: [
+      'Custom onboarding',
+      'Enterprise support SLA',
+      'Dedicated success manager',
+      'API access',
+      'Private strategy sessions',
+    ],
+    popular: false,
+  },
+];
+
+const faqs = [
+  {
+    q: 'What is GrowthKit?',
+    a: 'GrowthKit is an all-in-one platform helping startups accelerate growth with ready-to-use marketing templates, field-tested growth strategies, and simple automation tools for everyday operations.',
+  },
+  {
+    q: "How is GrowthKit different from generic template packs?",
+    a: "GrowthKit isn't just templates—it includes actionable playbooks, automation flows, collaboration features, and ongoing updates. It's designed to help you execute real growth campaigns, not just copy-paste assets.",
+  },
+  {
+    q: "Who is GrowthKit for?",
+    a: "It's built for founders, marketers, and small teams at SaaS and product startups who want fast traction without building a growth team from scratch.",
+  },
+  {
+    q: "Can my team collaborate inside GrowthKit?",
+    a: "Yes! Assign growth tasks, comment on strategies, share notes, and track all experiments—even across multiple workspaces.",
+  },
+  {
+    q: "Do I need coding or no-code experience?",
+    a: "No—the toolkit is designed to be usable out of the box. Automation recipes use point-and-click setup, with guides for everything advanced.",
+  },
+  {
+    q: "How does the free trial work?",
+    a: "Try all GrowthKit features for 7 days, no credit card required. Upgrade to keep access, or keep your work for later if you pause.",
+  },
+  {
+    q: "How do I get support?",
+    a: "All plans include email support. Growth and Enterprise plans include live onboarding and priority channels. Enterprise gets a dedicated manager.",
+  },
+];
+
+function HeroCTAButtons() {
   return (
-    <main>
-      <section className="py-20">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="lg:grid lg:grid-cols-12 lg:gap-8">
-            <div className="sm:text-center md:max-w-2xl md:mx-auto lg:col-span-6 lg:text-left">
-              <h1 className="text-4xl font-bold text-gray-900 tracking-tight sm:text-5xl md:text-6xl">
-               Build & Launch
-                <span className="block text-orange-500">SaaS in Days</span>
-              </h1>
-              <p className="mt-3 text-base text-gray-500 sm:mt-5 sm:text-xl lg:text-lg xl:text-xl">
-                The SaaS builder for teams that want to ship fast.
-                PandaSaaS ships auth, billing, teams, and ops so you can stay in
-                product mode, not plumbing mode.
-              </p>
-              <div className="mt-8 sm:max-w-lg sm:mx-auto sm:text-center lg:text-left lg:mx-0">
+    <div className="flex flex-col sm:flex-row justify-center gap-4 mt-8">
+      <a href="/sign-up">
+        <Button size="lg" className="rounded-full px-8 text-lg">
+          Start Free Trial
+          <ArrowRight className="ml-2 w-5 h-5" />
+        </Button>
+      </a>
+      <a href="mailto:hi@chirag.co?subject=GrowthKit%20Demo%20Request">
+        <Button size="lg" variant="outline" className="rounded-full px-8 text-lg">
+          Request a Demo
+        </Button>
+      </a>
+    </div>
+  );
+}
+
+"use client";
+import React, { useState } from "react";
+function FAQSection() {
+  const [openIndex, setOpenIndex] = useState<number | null>(null);
+  return (
+    <section className="py-24 bg-white w-full" id="faq">
+      <div className="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8">
+        <h2 className="text-3xl sm:text-4xl font-bold text-gray-900 text-center">
+          Frequently Asked Questions
+        </h2>
+        <div className="mt-10 divide-y divide-gray-200 border rounded-xl bg-gray-50 shadow flex flex-col">
+          {faqs.map((faq, i) => (
+            <div
+              key={faq.q}
+              className="py-6 px-6 cursor-pointer transition-colors hover:bg-orange-50 group"
+              onClick={() => setOpenIndex(openIndex === i ? null : i)}
+              role="button"
+              tabIndex={0}
+              aria-expanded={openIndex === i}
+              aria-controls={`faq-panel-${i}`}
+              onKeyDown={e => { if (e.key === "Enter" || e.key === " ") setOpenIndex(openIndex === i ? null : i); }}
+            >
+              <div className="flex items-center justify-between">
+                <h3 className="text-lg font-medium text-gray-900">{faq.q}</h3>
+                <span className={`ml-4 transition-transform ${openIndex === i ? "rotate-180" : ""}`}>
+                  <svg width={22} height={22} fill="none" stroke="currentColor" strokeWidth={2} viewBox="0 0 24 24">
+                    <path d="M6 9l6 6 6-6" />
+                  </svg>
+                </span>
+              </div>
+              <div
+                id={`faq-panel-${i}`}
+                className={`overflow-hidden transition-all duration-200 text-gray-700 text-base ${
+                  openIndex === i ? "max-h-60 mt-3 opacity-100" : "max-h-0 opacity-0"
+                }`}
+              >
+                <div aria-live={openIndex === i ? "polite" : "off"}>
+                  {faq.a}
+                </div>
+              </div>
+            </div>
+          ))}
+        </div>
+      </div>
+    </section>
+  );
+}
+
+export default function GrowthKitLanding() {
+  return (
+    <main className="grow bg-white">
+      {/* Headline & PAS Hero */}
+      <section className="pt-24 pb-20 bg-gradient-to-br from-orange-50/70 via-white to-white border-b">
+        <div className="max-w-4xl mx-auto px-6 lg:px-0">
+          <h1 className="text-5xl md:text-6xl font-extrabold text-gray-900 text-center leading-tight">
+            GrowthKit helps <span className="text-orange-500">startups grow faster</span>
+          </h1>
+          <p className="mt-8 text-xl md:text-2xl text-gray-600 md:text-center max-w-2xl mx-auto leading-relaxed">
+            <b>Stuck with slow growth and scattered marketing?</b> <br />
+            GrowthKit gives you the templates, playbooks, and automations you need to get results—consistently.
+          </p>
+          <HeroCTAButtons />
+        </div>
+      </section>
+
+      {/* Problem */}
+      <section className="py-20 bg-white border-b">
+        <div className="max-w-4xl mx-auto px-6 flex flex-col gap-8">
+          <h2 className="text-3xl sm:text-4xl font-bold text-gray-900">
+            The Problem
+          </h2>
+          <p className="text-lg text-gray-700">
+            Most startups fail to grow because marketing is unpredictable, DIY templates underperform, and every strategy feels like a shot in the dark. Hiring a full-stack growth team? Expensive and slow. Piecing together random advice? Risky. And trying every tool just adds more noise, not results.
+          </p>
+        </div>
+      </section>
+
+      {/* Agitate - Why Existing Solutions Fail */}
+      <section className="py-20 bg-orange-50 border-b">
+        <div className="max-w-4xl mx-auto px-6 flex flex-col gap-8">
+          <h2 className="text-3xl sm:text-4xl font-bold text-gray-900">
+            Why Other Solutions Flop
+          </h2>
+          <ul className="list-disc pl-6 mt-2 space-y-4 text-lg text-gray-800">
+            <li>
+              <b>Template packs are generic.</b> You still spend hours customizing everything, and there’s zero support for actual growth testing.
+            </li>
+            <li>
+              <b>No-code tools are overwhelming.</b> Lots of pieces, dozens of integrations, but no clear “next step”.
+            </li>
+            <li>
+              <b>Growth agencies are costly.</b> Few understand startup speed or test-and-learn culture. Turnaround times kill momentum.
+            </li>
+            <li>
+              <b>Most automations need ops expertise.</b> You need Zapier superpowers—most founders can’t (and shouldn’t) learn it all from scratch.
+            </li>
+          </ul>
+        </div>
+      </section>
+
+      {/* Solution */}
+      <section className="py-20 bg-white border-b">
+        <div className="max-w-4xl mx-auto px-6">
+          <h2 className="text-3xl sm:text-4xl font-bold text-gray-900">
+            GrowthKit Gives You a Growth Engine in a Box
+          </h2>
+          <p className="mt-6 text-lg text-gray-700">
+            Everything is ready to launch: high-performing templates, field-tested strategies, and prescriptive automation—all mapped to real startup funnels. Stop improvising. Skip copy-paste chaos. GrowthKit puts every campaign step, template, and automation in one place so you can spend less time wondering and more time winning.
+          </p>
+          <HeroCTAButtons />
+        </div>
+      </section>
+
+      {/* Features */}
+      <section className="py-20 bg-orange-50 border-b" id="features">
+        <div className="max-w-5xl mx-auto px-6">
+          <h2 className="text-3xl sm:text-4xl font-bold text-gray-900 text-center">
+            What’s Inside GrowthKit
+          </h2>
+          <div className="mt-12 grid grid-cols-1 md:grid-cols-2 gap-8">
+            {features.map((f) => (
+              <div className="rounded-xl bg-white p-8 shadow hover:shadow-lg transition-shadow border flex flex-col" key={f.name}>
+                <h3 className="text-xl font-semibold text-gray-900 mb-3">{f.name}</h3>
+                <p className="text-gray-700 text-base">{f.desc}</p>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Testimonials */}
+      <section className="py-24 bg-white border-b" id="testimonials">
+        <div className="max-w-4xl mx-auto px-6 text-center">
+          <h2 className="text-3xl sm:text-4xl font-bold text-gray-900 mb-12">
+            What People Are Saying
+          </h2>
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+            {testimonials.map((t) => (
+              <div key={t.name} className="flex flex-col items-center bg-orange-50 border border-orange-100 rounded-xl p-8 shadow group hover:border-orange-300 transition">
+                <Quote className="w-8 h-8 text-orange-500 mb-3" />
+                <p className="text-lg italic text-gray-800">“{t.quote}”</p>
+                <span className="mt-5 font-semibold text-gray-900 block">{t.name}</span>
+                <span className="text-gray-600 text-sm">{t.title}</span>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Pricing */}
+      <section className="py-24 bg-orange-50 border-b" id="pricing">
+        <div className="max-w-5xl mx-auto px-6">
+          <h2 className="text-3xl sm:text-4xl font-bold text-gray-900 text-center">
+            Simple, Transparent Pricing
+          </h2>
+          <p className="mt-4 text-lg text-gray-700 text-center">
+            Start with a free 7-day trial. Cancel anytime. No hidden fees.
+          </p>
+          <div className="mt-12 grid grid-cols-1 md:grid-cols-3 gap-8">
+            {pricingPlans.map((plan) => (
+              <div key={plan.name} className={`rounded-xl p-8 shadow-lg flex flex-col border ${plan.popular ? "border-orange-500 bg-white" : "border-gray-200 bg-white"}`}>
+                <div className="flex items-center gap-2">
+                  <h3 className="text-2xl font-bold text-gray-900">{plan.name}</h3>
+                  {plan.popular && (
+                    <span className="ml-2 px-3 py-1 bg-orange-500 text-white text-xs font-semibold rounded-full">Most Popular</span>
+                  )}
+                </div>
+                <p className="text-3xl text-orange-500 font-extrabold mt-4">{plan.price}</p>
+                <p className="mt-1 text-base text-gray-700">{plan.desc}</p>
+                <ul className="mt-6 mb-6 space-y-3 flex-1">
+                  {plan.features.map(f => (
+                    <li key={f} className="flex items-center gap-2 text-gray-700">
+                      <CheckCircle2 className="text-orange-500 w-5 h-5" /> <span>{f}</span>
+                    </li>
+                  ))}
+                </ul>
                 <a
-                  href="https://vercel.com/templates/next.js/next-js-saas-starter"
-                  target="_blank"
+                  href={plan.price === "Custom" ? "mailto:hi@chirag.co?subject=GrowthKit%20Enterprise%20Inquiry" : "/sign-up"}
+                  tabIndex={0}
                 >
-                  <Button
-                    size="lg"
-                    variant="outline"
-                    className="text-lg rounded-full"
-                  >
-                    Launch with PandaSaaS
-                    <ArrowRight className="ml-2 h-5 w-5" />
+                  <Button size="lg" className="w-full rounded-full" variant={plan.popular ? "default" : "outline"}>
+                    {plan.price === "Custom" ? "Contact Sales" : "Start Free Trial"}
                   </Button>
                 </a>
               </div>
-            </div>
-            <div className="mt-12 relative sm:max-w-lg sm:mx-auto lg:mt-0 lg:max-w-none lg:mx-0 lg:col-span-6 lg:flex lg:items-center">
-              <Terminal />
-            </div>
-          </div>
-        </div>
-      </section>
-
-      <section className="py-16 bg-white w-full">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center">
-            <h2 className="text-3xl font-bold text-gray-900 sm:text-4xl">
-              Everything a SaaS Builder Needs
-            </h2>
-            <p className="mt-4 text-lg text-gray-500">
-              PandaSaaS comes pre-wired with product, revenue, and ops building blocks.
-            </p>
-          </div>
-          <div className="mt-12 lg:grid lg:grid-cols-3 lg:gap-8">
-            <div>
-              <div className="flex items-center justify-center h-12 w-12 rounded-md bg-orange-500 text-white">
-                <svg viewBox="0 0 24 24" className="h-6 w-6">
-                  <path
-                    fill="currentColor"
-                    d="M14.23 12.004a2.236 2.236 0 0 1-2.235 2.236 2.236 2.236 0 0 1-2.236-2.236 2.236 2.236 0 0 1 2.235-2.236 2.236 2.236 0 0 1 2.236 2.236zm2.648-10.69c-1.346 0-3.107.96-4.888 2.622-1.78-1.653-3.542-2.602-4.887-2.602-.41 0-.783.093-1.106.278-1.375.793-1.683 3.264-.973 6.365C1.98 8.917 0 10.42 0 12.004c0 1.59 1.99 3.097 5.043 4.03-.704 3.113-.39 5.588.988 6.38.32.187.69.275 1.102.275 1.345 0 3.107-.96 4.888-2.624 1.78 1.654 3.542 2.603 4.887 2.603.41 0 .783-.09 1.106-.275 1.374-.792 1.683-3.263.973-6.365C22.02 15.096 24 13.59 24 12.004c0-1.59-1.99-3.097-5.043-4.032.704-3.11.39-5.587-.988-6.38-.318-.184-.688-.277-1.092-.278zm-.005 1.09v.006c.225 0 .406.044.558.127.666.382.955 1.835.73 3.704-.054.46-.142.945-.25 1.44-.96-.236-2.006-.417-3.107-.534-.66-.905-1.345-1.727-2.035-2.447 1.592-1.48 3.087-2.292 4.105-2.295zm-9.77.02c1.012 0 2.514.808 4.11 2.28-.686.72-1.37 1.537-2.02 2.442-1.107.117-2.154.298-3.113.538-.112-.49-.195-.964-.254-1.42-.23-1.868.054-3.32.714-3.707.19-.09.4-.127.563-.132zm4.882 3.05c.455.468.91.992 1.36 1.564-.44-.02-.89-.034-1.345-.034-.46 0-.915.01-1.36.034.44-.572.895-1.096 1.345-1.565zM12 8.1c.74 0 1.477.034 2.202.093.406.582.802 1.203 1.183 1.86.372.64.71 1.29 1.018 1.946-.308.655-.646 1.31-1.013 1.95-.38.66-.773 1.288-1.18 1.87-.728.063-1.466.098-2.21.098-.74 0-1.477-.035-2.202-.093-.406-.582-.802-1.204-1.183-1.86-.372-.64-.71-1.29-1.018-1.946.303-.657.646-1.313 1.013-1.954.38-.66.773-1.286 1.18-1.868.728-.064 1.466-.098 2.21-.098zm-3.635.254c-.24.377-.48.763-.704 1.16-.225.39-.435.782-.635 1.174-.265-.656-.49-1.31-.676-1.947.64-.15 1.315-.283 2.015-.386zm7.26 0c.695.103 1.365.23 2.006.387-.18.632-.405 1.282-.66 1.933-.2-.39-.41-.783-.64-1.174-.225-.392-.465-.774-.705-1.146zm3.063.675c.484.15.944.317 1.375.498 1.732.74 2.852 1.708 2.852 2.476-.005.768-1.125 1.74-2.857 2.475-.42.18-.88.342-1.355.493-.28-.958-.646-1.956-1.1-2.98.45-1.017.81-2.01 1.085-2.964zm-13.395.004c.278.96.645 1.957 1.1 2.98-.45 1.017-.812 2.01-1.086 2.964-.484-.15-.944-.318-1.37-.5-1.732-.737-2.852-1.706-2.852-2.474 0-.768 1.12-1.742 2.852-2.476.42-.18.88-.342 1.356-.494zm11.678 4.28c.265.657.49 1.312.676 1.948-.64.157-1.316.29-2.016.39.24-.375.48-.762.705-1.158.225-.39.435-.788.636-1.18zm-9.945.02c.2.392.41.783.64 1.175.23.39.465.772.705 1.143-.695-.102-1.365-.23-2.006-.386.18-.63.406-1.282.66-1.933zM17.92 16.32c.112.493.2.968.254 1.423.23 1.868-.054 3.32-.714 3.708-.147.09-.338.128-.563.128-1.012 0-2.514-.807-4.11-2.28.686-.72 1.37-1.536 2.02-2.44 1.107-.118 2.154-.3 3.113-.54zm-11.83.01c.96.234 2.006.415 3.107.532.66.905 1.345 1.727 2.035 2.446-1.595 1.483-3.092 2.295-4.11 2.295-.22-.005-.406-.05-.553-.132-.666-.38-.955-1.834-.73-3.703.054-.46.142-.944.25-1.438zm4.56.64c.44.02.89.034 1.345.034.46 0 .915-.01 1.36-.034-.44.572-.895 1.095-1.345 1.565-.455-.47-.91-.993-1.36-1.565z"
-                  />
-                </svg>
-              </div>
-              <div className="mt-5">
-                <h2 className="text-lg font-medium text-gray-900">
-                  Next.js + React
-                </h2>
-                <p className="mt-2 text-base text-gray-500">
-                  Ship at React speed with a production-grade Next.js foundation.
-                </p>
-              </div>
-            </div>
-
-            <div className="mt-10 lg:mt-0">
-              <div className="flex items-center justify-center h-12 w-12 rounded-md bg-orange-500 text-white">
-                <Database className="h-6 w-6" />
-              </div>
-              <div className="mt-5">
-                <h2 className="text-lg font-medium text-gray-900">
-                  Postgres + Drizzle ORM
-                </h2>
-                <p className="mt-2 text-base text-gray-500">
-                  Opinionated schema patterns for multi-tenant SaaS that scale.
-                </p>
-              </div>
-            </div>
-
-            <div className="mt-10 lg:mt-0">
-              <div className="flex items-center justify-center h-12 w-12 rounded-md bg-orange-500 text-white">
-                <CreditCard className="h-6 w-6" />
-              </div>
-              <div className="mt-5">
-                <h2 className="text-lg font-medium text-gray-900">
-                  Stripe Subscriptions
-                </h2>
-                <p className="mt-2 text-base text-gray-500">
-                  Ready-made pricing, checkout, and invoicing flows for SaaS revenue.
-                </p>
-              </div>
-            </div>
-          </div>
-
-          <div className="mt-12 lg:grid lg:grid-cols-3 lg:gap-8">
-            <div>
-              <div className="flex items-center justify-center h-12 w-12 rounded-md bg-orange-500 text-white">
-                <Shield className="h-6 w-6" />
-              </div>
-              <div className="mt-5">
-                <h2 className="text-lg font-medium text-gray-900">
-                  Authentication & Security
-                </h2>
-                <p className="mt-2 text-base text-gray-500">
-                  Hardened session flows, secure cookies, and role-aware guards by default.
-                </p>
-              </div>
-            </div>
-
-            <div className="mt-10 lg:mt-0">
-              <div className="flex items-center justify-center h-12 w-12 rounded-md bg-orange-500 text-white">
-                <Users className="h-6 w-6" />
-              </div>
-              <div className="mt-5">
-                <h2 className="text-lg font-medium text-gray-900">
-                  Team Workspaces
-                </h2>
-                <p className="mt-2 text-base text-gray-500">
-                  Multi-tenant workspaces, roles, and invites baked in for collaboration.
-                </p>
-              </div>
-            </div>
-
-            <div className="mt-10 lg:mt-0">
-              <div className="flex items-center justify-center h-12 w-12 rounded-md bg-orange-500 text-white">
-                <Mail className="h-6 w-6" />
-              </div>
-              <div className="mt-5">
-                <h2 className="text-lg font-medium text-gray-900">
-                  Email Notifications
-                </h2>
-                <p className="mt-2 text-base text-gray-500">
-                  SendGrid-powered lifecycle emails: invites, trials, renewals, and alerts.
-                </p>
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      <section className="py-16 bg-gray-50">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center">
-            <h2 className="text-3xl font-bold text-gray-900 sm:text-4xl">
-              Why Build with PandaSaaS?
-            </h2>
-            <p className="mt-4 text-lg text-gray-500">
-              Trade boilerplate for velocity and focus on customer value.
-            </p>
-          </div>
-          <div className="mt-12 grid grid-cols-1 gap-8 sm:grid-cols-2 lg:grid-cols-4">
-            <div className="text-center">
-              <div className="flex items-center justify-center h-16 w-16 rounded-full bg-orange-100 mx-auto">
-                <Zap className="h-8 w-8 text-orange-500" />
-              </div>
-              <h3 className="mt-6 text-lg font-semibold text-gray-900">
-                Fast Setup
-              </h3>
-              <p className="mt-2 text-base text-gray-500">
-                Create a workspace, wire Stripe, and ship your first feature the same day.
-              </p>
-            </div>
-
-            <div className="text-center">
-              <div className="flex items-center justify-center h-16 w-16 rounded-full bg-orange-100 mx-auto">
-                <Code className="h-8 w-8 text-orange-500" />
-              </div>
-              <h3 className="mt-6 text-lg font-semibold text-gray-900">
-                Production Ready
-              </h3>
-              <p className="mt-2 text-base text-gray-500">
-                Prebuilt flows for auth, billing, and compliance-friendly session handling.
-              </p>
-            </div>
-
-            <div className="text-center">
-              <div className="flex items-center justify-center h-16 w-16 rounded-full bg-orange-100 mx-auto">
-                <Server className="h-8 w-8 text-orange-500" />
-              </div>
-              <h3 className="mt-6 text-lg font-semibold text-gray-900">
-                Scalable Architecture
-              </h3>
-              <p className="mt-2 text-base text-gray-500">
-                Multi-tenant patterns, background jobs, and observability hooks included.
-              </p>
-            </div>
-
-            <div className="text-center">
-              <div className="flex items-center justify-center h-16 w-16 rounded-full bg-orange-100 mx-auto">
-                <Clock className="h-8 w-8 text-orange-500" />
-              </div>
-              <h3 className="mt-6 text-lg font-semibold text-gray-900">
-                Time Saver
-              </h3>
-              <p className="mt-2 text-base text-gray-500">
-                Spend time on differentiators, not recreating the same SaaS plumbing.
-              </p>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      <section className="py-16 bg-white">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center">
-            <h2 className="text-3xl font-bold text-gray-900 sm:text-4xl">
-              Builder-First Features
-            </h2>
-            <p className="mt-4 text-lg text-gray-500">
-              PandaSaaS ships the core moves every SaaS needs on day one.
-            </p>
-          </div>
-          <div className="mt-12 grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3">
-            {[
-              'User authentication & secure sessions',
-              'Team workspaces with roles',
-              'Role-based access control',
-              'Stripe subscription billing',
-              'Email notifications (SendGrid)',
-              'Activity logging for audits',
-              'Team member invitations',
-              'Trial and renewal alerts',
-              'Customer portal integration',
-              'Webhook handling templates',
-              'Database migrations ready',
-              'Type-safe API routes',
-            ].map((feature, index) => (
-              <div key={index} className="flex items-start">
-                <CheckCircle2 className="h-6 w-6 text-orange-500 flex-shrink-0 mt-0.5" />
-                <p className="ml-3 text-base text-gray-700">{feature}</p>
-              </div>
             ))}
           </div>
         </div>
       </section>
 
-      <section className="py-16 bg-gray-50">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center">
-            <h2 className="text-3xl font-bold text-gray-900 sm:text-4xl">
-              Launch with PandaSaaS in 4 Steps
-            </h2>
-            <p className="mt-4 text-lg text-gray-500">
-              Opinionated defaults get you from clone to cash fast.
-            </p>
-          </div>
-          <div className="mt-12 grid grid-cols-1 gap-8 md:grid-cols-2 lg:grid-cols-4">
-            <div>
-              <div className="flex items-center justify-center h-12 w-12 rounded-md bg-orange-100 text-orange-500 mb-4">
-                <GitBranch className="h-6 w-6" />
-              </div>
-              <h3 className="text-lg font-semibold text-gray-900">
-                Clone & Install
-              </h3>
-              <p className="mt-2 text-base text-gray-500">
-                Clone PandaSaaS and install dependencies with one command.
-              </p>
-            </div>
+      {/* FAQ */}
+      <FAQSection />
 
-            <div>
-              <div className="flex items-center justify-center h-12 w-12 rounded-md bg-orange-100 text-orange-500 mb-4">
-                <Settings className="h-6 w-6" />
-              </div>
-              <h3 className="text-lg font-semibold text-gray-900">
-                Configure
-              </h3>
-              <p className="mt-2 text-base text-gray-500">
-                Drop in env vars for database, Stripe, and email in minutes.
-              </p>
-            </div>
-
-            <div>
-              <div className="flex items-center justify-center h-12 w-12 rounded-md bg-orange-100 text-orange-500 mb-4">
-                <Database className="h-6 w-6" />
-              </div>
-              <h3 className="text-lg font-semibold text-gray-900">
-                Setup Database
-              </h3>
-              <p className="mt-2 text-base text-gray-500">
-                Run migrations and seed multi-tenant defaults instantly.
-              </p>
-            </div>
-
-            <div>
-              <div className="flex items-center justify-center h-12 w-12 rounded-md bg-orange-100 text-orange-500 mb-4">
-                <Rocket className="h-6 w-6" />
-              </div>
-              <h3 className="text-lg font-semibold text-gray-900">
-                Launch
-              </h3>
-              <p className="mt-2 text-base text-gray-500">
-                Start building features and deploy to production when you&apos;re ready.
-              </p>
-            </div>
-          </div>
+      {/* CTA: persistent */}
+      <section className="py-16 bg-orange-500 text-center">
+        <div className="max-w-2xl mx-auto px-6 flex flex-col items-center">
+          <h2 className="text-3xl sm:text-4xl font-bold text-white mb-4">
+            Ready to Grow?
+          </h2>
+          <p className="mb-7 text-lg text-orange-50">
+            Accelerate your startup’s growth with GrowthKit today.
+          </p>
+          <HeroCTAButtons />
         </div>
       </section>
 
-      <section className="py-16 bg-white">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center">
-            <h2 className="text-3xl font-bold text-gray-900 sm:text-4xl">
-              The PandaSaaS Stack
-            </h2>
-            <p className="mt-4 text-lg text-gray-500">
-              Modern, secure, and proven tech chosen for SaaS speed.
-            </p>
-          </div>
-          <div className="mt-12 grid grid-cols-2 gap-6 sm:grid-cols-3 lg:grid-cols-6">
-            {[
-              { name: 'Next.js', desc: 'React Framework' },
-              { name: 'TypeScript', desc: 'Type Safety' },
-              { name: 'PostgreSQL', desc: 'Database' },
-              { name: 'Drizzle ORM', desc: 'Type-safe ORM' },
-              { name: 'Stripe', desc: 'Payments' },
-              { name: 'SendGrid', desc: 'Email Service' },
-            ].map((tech, index) => (
-              <div
-                key={index}
-                className="bg-gray-50 rounded-lg p-6 text-center hover:bg-orange-50 transition-colors"
-              >
-                <h3 className="text-lg font-semibold text-gray-900">{tech.name}</h3>
-                <p className="mt-2 text-sm text-gray-500">{tech.desc}</p>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      <section className="py-16 bg-gray-50">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center">
-            <h2 className="text-3xl font-bold text-gray-900 sm:text-4xl">
-              Built for SaaS Builders
-            </h2>
-            <p className="mt-4 text-lg text-gray-500">
-              Whether you&apos;re validating or scaling, PandaSaaS accelerates the path.
-            </p>
-          </div>
-          <div className="mt-12 grid grid-cols-1 gap-8 md:grid-cols-3">
-            <div className="bg-white rounded-lg p-8 shadow-sm hover:shadow-md transition-shadow">
-              <div className="flex items-center justify-center h-12 w-12 rounded-md bg-orange-500 text-white mb-4">
-                <Globe className="h-6 w-6" />
-              </div>
-              <h3 className="text-xl font-semibold text-gray-900 mb-3">
-                B2B SaaS Products
-              </h3>
-              <p className="text-gray-500">
-                Launch subscription products with workspaces, roles, and billing ready.
-              </p>
-            </div>
-
-            <div className="bg-white rounded-lg p-8 shadow-sm hover:shadow-md transition-shadow">
-              <div className="flex items-center justify-center h-12 w-12 rounded-md bg-orange-500 text-white mb-4">
-                <TrendingUp className="h-6 w-6" />
-              </div>
-              <h3 className="text-xl font-semibold text-gray-900 mb-3">
-                Startup MVPs
-              </h3>
-              <p className="text-gray-500">
-                Validate quickly with production-grade flows so you can focus on product fit.
-              </p>
-            </div>
-
-            <div className="bg-white rounded-lg p-8 shadow-sm hover:shadow-md transition-shadow">
-              <div className="flex items-center justify-center h-12 w-12 rounded-md bg-orange-500 text-white mb-4">
-                <FileText className="h-6 w-6" />
-              </div>
-              <h3 className="text-xl font-semibold text-gray-900 mb-3">
-                Enterprise Solutions
-              </h3>
-              <p className="text-gray-500">
-                Serve larger customers with tenant isolation, audit trails, and secure sessions.
-              </p>
-            </div>
-          </div>
-        </div>
-      </section>
-
+      {/* Footer with owner info */}
       <footer className="bg-gray-900 text-gray-100">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12 grid gap-8 md:grid-cols-3 items-start">
+        <div className="max-w-7xl mx-auto px-6 py-12 flex flex-col-reverse md:flex-row gap-8 md:gap-16 items-start justify-between">
           <div>
-            <h3 className="text-xl font-semibold">PandaSaaS</h3>
-            <p className="mt-3 text-gray-300">
-              The opinionated SaaS builder that ships auth, billing, teams, and ops out of the box.
+            <h3 className="text-xl font-bold">GrowthKit by Growzio</h3>
+            <p className="mt-3 text-gray-300 max-w-xs">
+              The all-in-one growth launchpad for founders. <br />
+              &copy; {new Date().getFullYear()} Chirag Dodiya. All rights reserved.
             </p>
           </div>
           <div>
-            <h4 className="text-lg font-semibold">Build Faster</h4>
-            <ul className="mt-3 space-y-2 text-gray-300">
-              <li>Next.js + TypeScript core</li>
-              <li>Stripe subscriptions ready</li>
-              <li>Multi-tenant workspaces</li>
-              <li>Secure sessions & RBAC</li>
+            <h4 className="text-lg font-semibold">Get in touch</h4>
+            <ul className="mt-3 text-gray-300 space-y-2">
+              <li>
+                Email:{" "}
+                <a className="underline hover:text-white" href="mailto:hi@chirag.co">
+                  hi@chirag.co
+                </a>
+              </li>
+              <li>
+                {/* Optionally add phone or socials here */}
+              </li>
             </ul>
           </div>
           <div>
-            <h4 className="text-lg font-semibold">Stay in the Loop</h4>
-            <p className="mt-3 text-gray-300">
-              Get PandaSaaS updates, new templates, and launch guides.
-            </p>
-            <a
-              className="inline-flex items-center mt-4 px-4 py-2 rounded-full bg-orange-500 text-white hover:bg-orange-600 transition-colors"
-              href="https://vercel.com/templates/next.js/next-js-saas-starter"
-              target="_blank"
-            >
-              Join the waitlist
-              <ArrowRight className="ml-2 h-4 w-4" />
-            </a>
-          </div>
-        </div>
-        <div className="border-t border-gray-800">
-          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4 flex flex-col sm:flex-row items-center justify-between text-sm text-gray-400">
-            <span>© {new Date().getFullYear()} PandaSaaS. All rights reserved.</span>
-            <div className="flex space-x-4 mt-2 sm:mt-0">
-              <a className="hover:text-white" href="/privacy">
-                Privacy
-              </a>
-              <a className="hover:text-white" href="/terms">
-                Terms
-              </a>
-              <a className="hover:text-white" href="mailto:founders@pandasaas.com">
-                Contact
-              </a>
-            </div>
+            <h4 className="text-lg font-semibold mb-2">Jump to</h4>
+            <nav>
+              <ul className="text-gray-300 space-y-2">
+                <li>
+                  <a className="hover:text-white" href="#features">
+                    Features
+                  </a>
+                </li>
+                <li>
+                  <a className="hover:text-white" href="#testimonials">
+                    Testimonials
+                  </a>
+                </li>
+                <li>
+                  <a className="hover:text-white" href="#pricing">
+                    Pricing
+                  </a>
+                </li>
+                <li>
+                  <a className="hover:text-white" href="#faq">
+                    FAQ
+                  </a>
+                </li>
+                <li>
+                  <a className="hover:text-white" href="mailto:hi@chirag.co">
+                    Contact
+                  </a>
+                </li>
+              </ul>
+            </nav>
           </div>
         </div>
       </footer>
